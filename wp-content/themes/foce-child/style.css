@@ -7,3 +7,76 @@
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
  */
+
+ .elementToFadeInAndOut {
+    animation: fadeinout 4s linear forwards;
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+/* j'ai utilisé la propriété animation-iteration-count et j'ai la défini
+ sur infini et animation-timing-function sur linear */
+/* .site-footer::after  {
+
+    animation: rotate-infinite 10s linear infinite;
+  }
+  
+  @keyframes rotate-infinite {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .site-footer::before
+   {
+    animation: rotate-infinite 10s linear infinite;
+  }
+ 
+  .story h2::after {
+    animation: rotate-infinite 10s linear infinite;
+  }
+
+  .story__article::after {
+    animation: rotate-infinite 10s linear infinite;
+  }
+  #studio h2::before {
+    animation: rotate-infinite 10s linear infinite;
+  }
+
+  #studio h2::after {
+    animation: rotate-infinite 10s linear infinite;
+  }
+
+  .site-footer ul::after {
+    animation: rotate-infinite 10s linear infinite;
+
+  } */
+.site-footer::after,
+.site-footer:before,
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer ul::after {
+  animation: rotate-infinite 10s linear infinite;
+}
+
+
+
+@keyframes rotate-infinite {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+ 
