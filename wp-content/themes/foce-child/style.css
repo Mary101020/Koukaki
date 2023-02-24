@@ -8,57 +8,27 @@
  Version: 0.1
  */
 
- .elementToFadeInAndOut {
+.elementToFadeInAndOut {
     animation: fadeinout 4s linear forwards;
 }
 
 @keyframes fadeinout {
-  0%,100% { opacity: 0; }
-  100% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
 
 /* j'ai utilisé la propriété animation-iteration-count et j'ai la défini
  sur infini et animation-timing-function sur linear */
-/* .site-footer::after  {
 
-    animation: rotate-infinite 10s linear infinite;
-  }
-  
-  @keyframes rotate-infinite {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .site-footer::before
-   {
-    animation: rotate-infinite 10s linear infinite;
-  }
- 
-  .story h2::after {
-    animation: rotate-infinite 10s linear infinite;
-  }
-
-  .story__article::after {
-    animation: rotate-infinite 10s linear infinite;
-  }
-  #studio h2::before {
-    animation: rotate-infinite 10s linear infinite;
-  }
-
-  #studio h2::after {
-    animation: rotate-infinite 10s linear infinite;
-  }
-
-  .site-footer ul::after {
-    animation: rotate-infinite 10s linear infinite;
-
-  } */
 .site-footer::after,
 .site-footer:before,
 .story h2::after,
@@ -66,17 +36,160 @@
 #studio h2::before,
 #studio h2::after,
 .site-footer ul::after {
-  animation: rotate-infinite 10s linear infinite;
+    animation: rotate-infinite 20s linear infinite;
 }
 
 
 
 @keyframes rotate-infinite {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
- 
+
+
+
+.section-title span{
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  
+  .section-title span.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: slide-up 1s ease-in-out forwards;
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* .section-title span {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .section-title span.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+  
+  
+  
+  
+/* .site-footer {
+	position: relative;
+}
+
+.story {
+	position: relative;
+}
+
+
+#studio {
+	position: relative;
+}
+
+.site-footer::before {
+	content: url("./assets/images/Sunflower.png");
+	position: absolute;
+	left: 4em;
+	top: 0em;
+}
+
+.site-footer::after {
+	content: url("./assets/images/orchid.png");
+	position: absolute;
+	right: -4em;
+	bottom: 7.8em;
+
+}
+
+.site-footer ul::after {
+	content: url("./assets/images/hibiscus_footer.png");
+	position: absolute;
+	left: calc(50% - 323px);
+	bottom: -28.5em;
+	z-index: -1;
+}
+
+.story h2::before {
+	content: url("./assets/images/sunflower_leaves.png");
+	position: absolute;
+	left: 0;
+	top: 1.8em;
+	z-index: -1;
+}
+
+.story h2::after {
+	content: url("./assets/images/Sunflower.png");
+	position: absolute;
+	left: 0.7em;
+	top: 6em;
+}
+
+.story__article::before {
+	content: url("./assets/images/hibiscus_leaves.png");
+	position: absolute;
+	left: 50%;
+	top: 8em;
+	z-index: -1;
+}
+
+.story__article::after {
+	content: url("./assets/images/Hibiscus.png");
+	position: absolute;
+	left: calc(50% + 414px);
+	top: 2em;
+}
+
+#studio h2::before {
+	content: url("./assets/images/random_flower.png");
+	position: absolute;
+	left: -1em;
+	top: 0;
+}
+
+#studio h2::after {
+	content: url("./assets/images/flower.png");
+	position: absolute;
+	right: 1em;
+	top: 1.2em;
+}
+
+#studio>div::before {
+	content: url("./assets/images/trple-leaf.png");
+	position: absolute;
+	left: calc(50% - 17.225px);
+	top: 40%;
+}
+
+@media all and (max-width: 1040px) {
+	.story__article::before {
+		left: 33%;
+		top: 15em;
+	}
+
+	.story__article::after {
+		content: url("./assets/images/Hibiscus.png");
+		position: absolute;
+		left: calc(33% + 414px);
+		top: 9em;
+	}
+
+	.story #characters {
+		flex-direction: column;
+	}
+} */

@@ -1,3 +1,5 @@
+
+    
 <?php
 
 get_header();
@@ -8,8 +10,8 @@ get_header();
         <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> "
             alt="logo Fleurs d'oranger & chats errants">
     </section>
-    <section id="#story" class="story">
-        <h2>L'histoire</h2>
+    <section id="story" class="story">
+        <h2 class="section-title"><span>L'histoire</span></h2>
         <article id="" class="story__article">
             <p>
                 <?php echo get_theme_mod('story'); ?>
@@ -63,8 +65,8 @@ get_header();
     </section>
 
 
-    <section id="studio" class="rotate">
-        <h2>Studio Koukaki</h2>
+    <section id="studio">
+        <h2  class="section-title"><span>Studio Koukaki</span></h2>
         <div>
             <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue
                 des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections
@@ -77,9 +79,10 @@ get_header();
                 errants”.</p>
         </div>
     </section>
-    <script src="script.js"></script>
+
+    <?php get_template_part( 'js/script' ); ?>
 
 </main><!-- #main -->
 
 <?php
-get_footer();
+get_footer();?>
