@@ -1,23 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // Select the elements to animate
+  const elements = document.querySelectorAll('.site-footer::after, .site-footer:before, .story h2::after, .story__article::after, #studio h2::before, #studio h2::after, .site-footer ul::after');
 
-const elements = document.querySelectorAll('.site-footer::after, .site-footer:before, .story h2::after, .story__article::after, #studio h2::before, #studio h2::after, .site-footer ul::after');
+  // Define the maximum and minimum animation durations (in seconds)
+  const maxDuration = 25;
+  const minDuration = 2;
 
-// Définir les valeurs de durée d'animation maximale et minimale
-const maxDuration = 50;
-const minDuration = 2;
+  // Add an event listener to the window object to track the scroll position
+  window.addEventListener('scroll', () => { 
+    // Calculate the current scroll position relative to the total document height
+    const scrollPosition = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.scrollHeight;
+   
+    // Calculate the new animation duration based on the scroll position
+    const newDuration = minDuration + ((maxDuration - minDuration) * (1 - scrollPosition));
 
-// Ajouter un écouteur d'événement à l'objet fenêtre pour suivre la position de défilement
-window.addEventListener('scroll', () => {
-  // Calculer la position de défilement actuelle par rapport à la hauteur totale du document
-  const scrollPosition = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.offsetHeight;
+    // Update the animation duration for each element
+    elements.forEach((element) => {
+      element.style.animationDuration = `${newDuration}s !important`;
 
- // Calcule la nouvelle durée de l'animation en fonction de la position de défilement
-  const newDuration = maxDuration - ((maxDuration - minDuration) * scrollPosition);
-
-// Mise à jour de la durée de l'animation pour chaque élément
-  elements.forEach((element) => {
-    element.style.animationDuration = `${newDuration}s`;
+    });
   });
 });
+
+
+
+
+
 
 
 
@@ -35,15 +43,9 @@ const studioSpan = document.querySelector('#studio .section-title span');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      if (entry.target === storySection) {
-        setTimeout(() => {
-          storySpan.classList.add('is-visible');
-        }, 1000); // Delay the appearance of storySpan by 1 second
-      } else if (entry.target === studioSection) {
-        setTimeout(() => {
-          studioSpan.classList.add('is-visible');
-        }, 1000); // Delay the appearance of studioSpan by 1 second
-      }
+      setTimeout(() => {
+        entry.target.querySelector('.section-title span').classList.add('is-visible');
+      }, 1000);
     }
   });
 });
@@ -51,3 +53,9 @@ const observer = new IntersectionObserver((entries) => {
 // Observer l'élément section
 observer.observe(storySection);
 observer.observe(studioSection);
+
+
+
+
+
+

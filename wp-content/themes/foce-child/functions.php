@@ -19,3 +19,7 @@ function child_theme_scripts() {
     wp_enqueue_script( 'child-theme-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'child_theme_scripts' );
+
+
+
+

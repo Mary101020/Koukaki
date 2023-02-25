@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer rotate">
+	<footer id="colophon" class="site-footer">
         <ul>
             <li><a href="#">Mentions Légales</a></li>
             <li><a href="#">STUDIO KOUKAKI</a></li>
