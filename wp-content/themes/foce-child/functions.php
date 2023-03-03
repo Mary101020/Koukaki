@@ -21,5 +21,15 @@ function child_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'child_theme_scripts' );
 
 
+// function my_custom_scripts() {
+//     wp_register_script( 'swiper', get_stylesheet_directory_uri() . '/node_modules/swiper/swiper-bundle.min.js', array(), '5.4.5', true );
+//     wp_enqueue_script( 'swiper' );
+// }
+// add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );
 
+
+// function enqueue_swiper_styles() {
+//     wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css' );
+// }
+// add_action( 'wp_enqueue_scripts', 'enqueue_swiper_styles' );
 

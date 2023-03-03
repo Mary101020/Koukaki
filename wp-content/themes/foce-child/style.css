@@ -8,6 +8,8 @@
  Version: 0.1
  */
 
+
+
 .elementToFadeInAndOut {
     animation: fadeinout 1s linear forwards;
 }
@@ -57,61 +59,102 @@
     opacity: 0;
     transform: translateY(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    display: block;
   }
   
   .section-title span.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+    /* opacity: 1;
+    transform: translateY(0); */
     animation: slide-up 1s ease-in-out forwards;
   }
   
   @keyframes slide-up {
     from {
-      opacity: 0;
+      opacity: 1;
       transform: translateY(100%);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
-  }
+  } 
   
-/* le css pour la nouvelle section en bas de la page */
-#oscars {
-    background-image: url(images_koukaki/orange_characters_bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 150px 0;
+  
+  /*-------------------- La nouvelle section -------------------------*/
+  
+  #oscars {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 338px;
   }
   
-  #oscars h3 {
-    font-size: 36px;
-    text-align: center;
-    color: #ffffff;
-    padding: 30px;
-    border-radius: 50px;
-    max-width: 80%;
-    margin: 0 auto;
+  .container {
+    flex-basis: 76%;
+    background: url(images_koukaki/orange_characters_bg.png), url(images_koukaki/orange_place_bg.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    
+  }
+  
+  .container h3 {
+    margin-top: 0;
+  }
+  
+  .oscar_img {
+    flex-basis: 24%;
+    background: url(images_koukaki/oscar.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1;
+    height: 140px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    #oscars {
+      flex-direction: column;
+    }
+    .container, .oscar_img {
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 
+  .site-footer {
+    position: relative;
+    display: block;
+    padding-top: 10em;
+    padding-bottom: 1em;
+    overflow: hidden;
+
+}
   
-/* Set initial state */
+/*-------------------- L'effet d’apparition en fade in de chacune des sections ------------------*/
+
+/* Définir l'état initial */
 .banner, .story, #studio #oscars {
     opacity: 0;
     transform: translateY(100px);
 }
 
-/* Animate on load */
+/* Animer au chargement */
 .banner.in-view {
     animation: slide-down 2s ease-out forwards;
 }
 
-.story.in-view, #studio.in-view , #oscars.in-view {
+.story.in-view, #studio.in-view , #oscars.in-view, .superimposed_logo.in-view {
     animation: slide-up 2s ease-out forwards;
 }
 
-/* Define animations */
+/* Définir les animations */
 @keyframes slide-down {
     from { opacity: 1; transform: translateY(-100px); }
     to { opacity: 1; transform: translateY(0); }
@@ -122,7 +165,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Exclude certain elements from animation */
+/* Exclure certains éléments de l'animation */
 .banner.exclude,
 .story.exclude,
 #studio.exclude,
@@ -132,111 +175,84 @@
     animation: none !important; 
 }
 
+/*------- Le hero header avec une vidéo en background et une image en fallback-------- */
+
+.banner {
+    position: relative;
+    height: 47vh;
+  }
+
+  .banner__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-image: url('images_koukaki/banner.png');
+    background-position: center;
+    z-index: -1;
+    background-size: cover;
+  }
   
+  .banner__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
   
+  .banner__video.loaded {
+    opacity: 1;
+  }
   
+  .superimposed_logo {
+    margin-top: 0 !important;
+    top: 5%;
+   
+    z-index: 2;
+    height: auto;
+    position: absolute;
+  }
   
-/* .site-footer {
-	position: relative;
-}
-
-.story {
-	position: relative;
-}
 
 
-#studio {
-	position: relative;
-}
+/* --------------Le mouvement des nuages------------- */
+.story #place {
+    display: flex;
+    background-image: url("images_koukaki/Studio_Koukaki-image_place.png");
+    width: 100%;
+    min-height: 699px;
+    background-size: cover;
+    flex-direction: row;
+  }
+  
+  .cloud-container {
+    display: flex;
+    align-items: center;
+  }
 
-.site-footer::before {
-	content: url("./assets/images/Sunflower.png");
-	position: absolute;
-	left: 4em;
-	top: 0em;
-}
+  .clouds {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .big-cloud {
+    position: absolute;
+    top: 10%;
+    width: 300px;
+    z-index: 1;
+    padding-top: 80px;
+  }
+  
+  .little-cloud {
+    position: absolute;
+    top: 40%;
+    width: 150px;
+    z-index: 2;
+    padding-top: 185px;
+  }
+  
 
-.site-footer::after {
-	content: url("./assets/images/orchid.png");
-	position: absolute;
-	right: -4em;
-	bottom: 7.8em;
 
-}
-
-.site-footer ul::after {
-	content: url("./assets/images/hibiscus_footer.png");
-	position: absolute;
-	left: calc(50% - 323px);
-	bottom: -28.5em;
-	z-index: -1;
-}
-
-.story h2::before {
-	content: url("./assets/images/sunflower_leaves.png");
-	position: absolute;
-	left: 0;
-	top: 1.8em;
-	z-index: -1;
-}
-
-.story h2::after {
-	content: url("./assets/images/Sunflower.png");
-	position: absolute;
-	left: 0.7em;
-	top: 6em;
-}
-
-.story__article::before {
-	content: url("./assets/images/hibiscus_leaves.png");
-	position: absolute;
-	left: 50%;
-	top: 8em;
-	z-index: -1;
-}
-
-.story__article::after {
-	content: url("./assets/images/Hibiscus.png");
-	position: absolute;
-	left: calc(50% + 414px);
-	top: 2em;
-}
-
-#studio h2::before {
-	content: url("./assets/images/random_flower.png");
-	position: absolute;
-	left: -1em;
-	top: 0;
-}
-
-#studio h2::after {
-	content: url("./assets/images/flower.png");
-	position: absolute;
-	right: 1em;
-	top: 1.2em;
-}
-
-#studio>div::before {
-	content: url("./assets/images/trple-leaf.png");
-	position: absolute;
-	left: calc(50% - 17.225px);
-	top: 40%;
-}
-
-@media all and (max-width: 1040px) {
-	.story__article::before {
-		left: 33%;
-		top: 15em;
-	}
-
-	.story__article::after {
-		content: url("./assets/images/Hibiscus.png");
-		position: absolute;
-		left: calc(33% + 414px);
-		top: 9em;
-	}
-
-	.story #characters {
-		flex-direction: column;
-	}
-} */
