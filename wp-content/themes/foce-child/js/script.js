@@ -1,35 +1,52 @@
 
-//--------------- Déclencher une rotation plus rapide des fleurs lors du défilement
+/* --------------Déclencher une rotation plus rapide des fleurs lors du défilement------------- */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Select the elements to animate
-  const myElement = document.querySelector('.site-footer');
-  const myPseudoElement = window.getComputedStyle(myElement, ':after');
-  console.log(myPseudoElement);
 
-  // Define the maximum and minimum animation durations (in seconds)
+document.addEventListener('DOMContentLoaded', () => { 
+  // Sélectionner les éléments à animer
+  const myElements = [
+    document.querySelector('.site-footer'),
+    document.querySelector('.story h2'),
+    document.querySelector('.story__article'),
+    document.querySelector('#studio h2'),
+    document.querySelector('.site-footer ul'),
+  ];
+  const myPseudoElements = [
+    window.getComputedStyle(document.querySelector('.site-footer'), '::after'),
+    window.getComputedStyle(document.querySelector('.site-footer'), '::before'),
+    window.getComputedStyle(document.querySelector('.story h2'), '::after'),
+    window.getComputedStyle(document.querySelector('.story__article'), '::after'),
+    window.getComputedStyle(document.querySelector('#studio h2'), '::before'),
+    window.getComputedStyle(document.querySelector('#studio h2'), '::after'),
+    window.getComputedStyle(document.querySelector('.site-footer ul'), '::after')
+  ];
+  const myElementsWithPseudo = [...myElements, ...myPseudoElements];
+  // console.log(myElementsWithPseudo);
+
+  // Définir les durées maximale et minimale des animations (en secondes)
   const maxDuration = 25;
-  const minDuration = 2;
+  const minDuration = 5;
 
-  // Add an event listener to the window object to track the scroll position
+  // Ajouter un écouteur d'événement à l'objet window pour suivre la position de défilement
   window.addEventListener('scroll', () => { 
-    // Calculate the current scroll position relative to the total document height
+    // Calculer la position de défilement actuelle par rapport à la hauteur totale du document
     const scrollPosition = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.scrollHeight;
 
-    // Calculate the new animation duration based on the scroll position
+   // Calculer la nouvelle durée de l'animation en fonction de la position de défilement
     const newDuration = minDuration + ((maxDuration - minDuration) * (1 - scrollPosition));
 
-    // Update the animation duration for the element
-    myElement.style.animationDuration = `${newDuration}s`;
+    // Mise à jour de la durée d'animation des éléments
+    myElementsWithPseudo.forEach(element => {
+      element.style.animationDuration = `${newDuration}s`;
+    });
   });
 });
 
 
 
 
+/* --------------L'apparence des titres lors de la consultation de la section------------- */
 
-
-// L'apparence des titres lors de la consultation de la section
 
 // Sélectionner l'élément de section en fonction de l'ID et de l'élément span dans le titre de la section
 const storySection = document.getElementById('story');
@@ -53,8 +70,8 @@ observer.observe(storySection);
 observer.observe(studioSection);
 
 
+ /* --------------Calcul du mouvement et du positionnement des nuages------------- */
 
-// Calcul du mouvement et du positionnement des nuages
 const clouds = document.querySelector('.clouds');
 const bigCloud = document.querySelector('.big-cloud');
 const littleCloud = document.querySelector('.little-cloud');
@@ -67,7 +84,34 @@ window.addEventListener('scroll', () => {
   littleCloud.style.left = -100 + scrollPercentage * 20 * 2 + 'px';
 });
 
+  /* -------------------------Le menu burger---------------------------------------- */
 
+
+const menuToggle = document.querySelector('.menu-toggle');
+const menuOverlay = document.querySelector('#menu-overlay');
+const navigationMenu = document.querySelector('.main-navigation');
+
+menuToggle.addEventListener('click', () => {
+  // Toggle active class on burger menu
+  menuToggle.classList.toggle('active');
+
+  // Toggle active class on navigation menu
+  navigationMenu.classList.toggle('active');
+
+  // Toggle active class on menu overlay
+  menuOverlay.classList.toggle('active');
+});
+
+
+  function closeNav() {
+    var menuOverlay = document.querySelector('#menu-overlay');
+    var navigationMenu = document.querySelector('.main-navigation');
+
+    // Remove active class from burger menu, menu overlay, and navigation menu
+    document.querySelector('.menu-toggle').classList.remove('active');
+    menuOverlay.classList.remove('active');
+    navigationMenu.classList.remove('active');
+  }
 
 
 

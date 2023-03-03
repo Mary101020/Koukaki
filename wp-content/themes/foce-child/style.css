@@ -60,52 +60,53 @@
     transform: translateY(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
     display: block;
-  }
-  
-  .section-title span.is-visible {
+}
+
+.section-title span.is-visible {
     /* opacity: 1;
     transform: translateY(0); */
     animation: slide-up 1s ease-in-out forwards;
-  }
-  
-  @keyframes slide-up {
+}
+
+@keyframes slide-up {
     from {
-      opacity: 1;
-      transform: translateY(100%);
+        opacity: 1;
+        transform: translateY(100%);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  } 
-  
-  
-  /*-------------------- La nouvelle section -------------------------*/
-  
-  #oscars {
+}
+
+
+/*-------------------- La nouvelle section -------------------------*/
+
+#oscars {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     padding-bottom: 338px;
-  }
-  
-  .container {
+}
+
+.container {
     flex-basis: 76%;
     background: url(images_koukaki/orange_characters_bg.png), url(images_koukaki/orange_place_bg.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     padding: 20px;
-    
-  }
-  
-  .container h3 {
+
+}
+
+.container h3 {
     margin-top: 0;
-  }
-  
-  .oscar_img {
+}
+
+.oscar_img {
     flex-basis: 24%;
     background: url(images_koukaki/oscar.png);
     background-repeat: no-repeat;
@@ -115,20 +116,22 @@
     height: 140px;
     padding: 0;
     margin: 0;
-  }
-  
-  @media (max-width: 768px) {
-    #oscars {
-      flex-direction: column;
-    }
-    .container, .oscar_img {
-      flex-basis: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  }
+}
 
-  .site-footer {
+@media (max-width: 768px) {
+    #oscars {
+        flex-direction: column;
+    }
+
+    .container,
+    .oscar_img {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.site-footer {
     position: relative;
     display: block;
     padding-top: 10em;
@@ -136,11 +139,13 @@
     overflow: hidden;
 
 }
-  
+
 /*-------------------- L'effet d’apparition en fade in de chacune des sections ------------------*/
 
 /* Définir l'état initial */
-.banner, .story, #studio #oscars {
+.banner,
+.story,
+#studio #oscars {
     opacity: 0;
     transform: translateY(100px);
 }
@@ -150,19 +155,36 @@
     animation: slide-down 2s ease-out forwards;
 }
 
-.story.in-view, #studio.in-view , #oscars.in-view, .superimposed_logo.in-view {
+.story.in-view,
+#studio.in-view,
+#oscars.in-view,
+.superimposed_logo.in-view {
     animation: slide-up 2s ease-out forwards;
 }
 
 /* Définir les animations */
 @keyframes slide-down {
-    from { opacity: 1; transform: translateY(-100px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 1;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slide-up {
-    from { opacity: 1; transform: translateY(100px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 1;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Exclure certains éléments de l'animation */
@@ -172,7 +194,7 @@
 #oscars.exclude {
     opacity: 1 !important;
     transform: none !important;
-    animation: none !important; 
+    animation: none !important;
 }
 
 /*------- Le hero header avec une vidéo en background et une image en fallback-------- */
@@ -180,9 +202,9 @@
 .banner {
     position: relative;
     height: 47vh;
-  }
+}
 
-  .banner__background {
+.banner__background {
     position: absolute;
     top: 0;
     left: 0;
@@ -192,29 +214,29 @@
     background-position: center;
     z-index: -1;
     background-size: cover;
-  }
-  
-  .banner__video {
+}
+
+.banner__video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: auto;
-  }
-  
-  .banner__video.loaded {
+}
+
+.banner__video.loaded {
     opacity: 1;
-  }
-  
-  .superimposed_logo {
+}
+
+.superimposed_logo {
     margin-top: 0 !important;
     top: 5%;
-   
+
     z-index: 2;
     height: auto;
     position: absolute;
-  }
-  
+}
+
 
 
 /* --------------Le mouvement des nuages------------- */
@@ -225,34 +247,177 @@
     min-height: 699px;
     background-size: cover;
     flex-direction: row;
-  }
-  
-  .cloud-container {
+}
+
+.cloud-container {
     display: flex;
     align-items: center;
-  }
+}
 
-  .clouds {
+.clouds {
     position: relative;
     height: 100%;
     width: 100%;
-  }
-  
-  .big-cloud {
+}
+
+.big-cloud {
     position: absolute;
     top: 10%;
     width: 300px;
     z-index: 1;
     padding-top: 80px;
-  }
-  
-  .little-cloud {
+}
+
+.little-cloud {
     position: absolute;
     top: 40%;
     width: 150px;
     z-index: 2;
     padding-top: 185px;
-  }
-  
+}
 
 
+/* --------------Le menu burger------------- */
+
+.site-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Hide the navigation menu by default */
+.main-navigation {
+    display: none;
+}
+
+/* Style the burger menu */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    z-index: 4;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Faites pivoter la première et la troisième ligne pour former un X */
+.menu-toggle.active .line:first-child {
+    transform: rotate(45deg) translate(9.5px, 8.5px);
+}
+
+.menu-toggle.active .line:last-child {
+    transform: rotate(-45deg) translate(7.5px, -7.5px);
+}
+
+.menu-toggle.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+/* Affiche le menu de navigation lorsque le menu burger est cliqué */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+#menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-navigation.active {
+    display: block;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    height: calc(100% - 80px);
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    z-index: 2;
+    background-color: #FFF5E9;
+}
+
+
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFD5A2;
+    height: 13vh;
+}
+
+.site-header div {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Quicksand", sans-serif;
+    font-size: 21.5px;
+}
+
+.site-header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.main-navigation ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-logo a {
+    display: flex;
+    justify-content: center;
+}
+
+.site-logo img {
+    width: 20%;
+}
+
+#site-navigation ul li a {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 78px;
+    text-align: center;
+    color: #000000;
+}
+
+#site-navigation ul li a:hover {
+    text-shadow: 0px 0px 14px #FF5C00;
+}
+
+
+/* 
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+    .main-navigation {
+        display: block !important;
+    }
+} */
