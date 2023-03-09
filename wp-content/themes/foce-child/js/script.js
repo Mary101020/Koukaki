@@ -90,6 +90,11 @@ window.addEventListener('scroll', () => {
 const menuToggle = document.querySelector('.menu-toggle');
 const menuOverlay = document.querySelector('#menu-overlay');
 const navigationMenu = document.querySelector('.main-navigation');
+const siteHeader = document.querySelector('.site-header');
+const siteLogo = document.querySelector('.site-logo');
+
+
+
 
 menuToggle.addEventListener('click', () => {
   // Toggle active class on burger menu
@@ -100,6 +105,14 @@ menuToggle.addEventListener('click', () => {
 
   // Toggle active class on menu overlay
   menuOverlay.classList.toggle('active');
+
+  siteHeader.classList.toggle('active');
+
+  siteLogo.classList.toggle('active');
+
+
+
+
 });
 
 
@@ -111,8 +124,10 @@ menuToggle.addEventListener('click', () => {
     document.querySelector('.menu-toggle').classList.remove('active');
     menuOverlay.classList.remove('active');
     navigationMenu.classList.remove('active');
+    
   }
 
+  
 
 
 

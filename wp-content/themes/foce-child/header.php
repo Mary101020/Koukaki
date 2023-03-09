@@ -34,7 +34,7 @@
                 <a href="#">Fleurs d'oranger & chats errants
             </div>
             <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                <span class="line"></span>
+                <span class="line "></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </button>
@@ -50,6 +50,7 @@
                     <li><a href="#characters" onclick="closeNav()">Personnages</a></li>
                     <li><a href="#place" onclick="closeNav()">Lieu</a></li>
                     <li><a href="#studio" onclick="closeNav()">Studio Koukaki</a></li>
+                    <li class="studioK"><a href="#">STUDIO KOUKAKI</li>
                 </ul>
 
             </nav><!-- #site-navigation -->

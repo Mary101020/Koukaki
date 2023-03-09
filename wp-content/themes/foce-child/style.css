@@ -31,27 +31,32 @@
 /* j'ai utilisé la propriété animation-iteration-count et j'ai la défini
  sur infini et animation-timing-function sur linear */
 
-.site-footer::after,
-.site-footer:before,
-.story h2::after,
-.story__article::after,
-#studio h2::before,
-#studio h2::after,
-.site-footer ul::after {
-    animation: rotate-infinite 25s linear infinite;
-}
-
-
-
-@keyframes rotate-infinite {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(720deg);
-    }
-}
+ .site-footer::after,
+ .site-footer:before,
+ .story h2::after,
+ .story__article::after,
+ #studio h2::before,
+ #studio h2::after,
+ .site-footer ul::after,
+ .site-header.active::after,
+ .site-header.active::before,
+ .main-navigation.active::before,
+ .main-navigation.active::after,
+ .menu-toggle.active::after {
+     animation: rotate-infinite 25s linear infinite;
+     transform-origin: center;
+ }
+ 
+ @keyframes rotate-infinite {
+     0% {
+         transform: rotate(0deg);
+     }
+ 
+     100% {
+         transform: rotate(720deg);
+     }
+ }
+ 
 
 
 /* les animations pour les titres h2  */
@@ -277,19 +282,29 @@
 }
 
 
-/* --------------Le menu burger------------- */
+/* ----------------------------------------Le menu burger--------------------------------------- */
 
 .site-header {
     display: flex;
     justify-content: flex-end;
 }
 
-/* Hide the navigation menu by default */
+.studioK li a {
+    font-size: 15px !important;
+
+}
+
+.studioK ul li a{
+    margin-top: 65px !important;
+    margin-bottom: -72px !important;
+}
+
+/* Cacher le menu de navigation par défaut */
 .main-navigation {
     display: none;
 }
 
-/* Style the burger menu */
+/* Styliser le menu burger */
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -312,7 +327,7 @@
     transition: all 0.3s ease;
 }
 
-/* Faites pivoter la première et la troisième ligne pour former un X */
+/* Faire pivoter la première et la troisième ligne pour former un X */
 .menu-toggle.active .line:first-child {
     transform: rotate(45deg) translate(9.5px, 8.5px);
 }
@@ -348,15 +363,14 @@
     display: block;
     position: fixed;
     top: 80px;
-    left: 0;
+    left: auto;
     height: calc(100% - 80px);
     width: 100%;
-    max-width: 100%;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
+    /* max-width: 100%; */
     z-index: 2;
     background-color: #FFF5E9;
+    max-width: 1440px;
+    margin: auto;
 }
 
 
@@ -386,6 +400,12 @@
 .main-navigation ul {
     display: flex;
     flex-direction: column;
+  
+  }
+  
+
+.site-logo {
+    position: relative;
 }
 
 .site-logo a {
@@ -397,7 +417,11 @@
     width: 20%;
 }
 
-#site-navigation ul li a {
+#site-navigation {
+    overflow: hidden;
+}
+
+#site-navigation ul li:not(.site-logo):not(.studioK) a {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 400;
@@ -405,6 +429,7 @@
     line-height: 78px;
     text-align: center;
     color: #000000;
+    animation: slide-up 1s ease-in-out forwards
 }
 
 #site-navigation ul li a:hover {
@@ -412,12 +437,182 @@
 }
 
 
-/* 
+
+.site-header.active::after {
+    content: "";
+    background: url(images_koukaki/orchid.png) no-repeat top left;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 16vh;
+    left: -12vh;
+    z-index: 3;
+    background-size: 100%;
+}
+
+.site-header.active::before {
+    content: "";
+    background: url(images_koukaki/flower.png) no-repeat top left;
+    background-size: 100%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 70vh;
+    left: 34vh;
+    z-index: 3;
+}
+
+.site-logo.active::before {
+    content: "";
+    background: url(images_koukaki/cat\ \(1\).png) no-repeat top left;
+    background-size: 100%;
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 20vh;
+    left: 10vh;
+    z-index: 3;
+}
+
+.site-logo.active::after {
+    content: "";
+    background: url(images_koukaki/Group\ 180.png) no-repeat top right;
+    background-size: 100%;
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 48vh;
+    right: 7vh;
+    z-index: 3;
+}
+
+.main-navigation.active::before {
+    content: "";
+    background: url(images_koukaki/Hibiscus.png) bottom right no-repeat;
+    background-size: 100%;
+    width: 361px;
+    height: 361px;
+    position: absolute;
+    bottom: -30vh;
+    right: -30vh;
+    z-index: 3;
+}
+
+
+
+.main-navigation.active::after {
+    content: "";
+    background: url(images_koukaki/Sunflower.png) no-repeat top right;
+    background-size: contain;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 12vh;
+    right: 30vh;
+    z-index: 3;
+}
+
+.menu-toggle.active::after {
+    content: "";
+    background: url(images_koukaki/random_flower.png) bottom right no-repeat;
+    background-size: 100%;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    bottom: -53vh;
+    right: -4vh;
+    z-index: 3;
+}
+
+.menu-toggle.active::before {
+    content: "";
+    background: url(images_koukaki/cat.png) no-repeat bottom left;
+    background-size: contain;
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 70vh;
+    left: 13vh;
+    z-index: 3;
+}
+
 @media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: none;
+    .site-header.active::after {
+        width: 100px;
+        height: 89px;
+        top: 80%;
+        left: 0%;
     }
-    .main-navigation {
-        display: block !important;
+
+    .site-header.active::before {
+        width: 60px;
+        height: 60px;
+        top: 40%;
+        left: 5%;
     }
-} */
+
+    .main-navigation.active::before {
+        width: 80px;
+        height: 79px;
+        top: 35%;
+        left: 60%;
+    }
+
+    .main-navigation.active::after {
+        width: 80px;
+        height: 79px;
+        top: 5%;
+        left: 50%;
+    }
+
+    .menu-toggle.active::after {
+        width: 60px;
+        height: 60px;
+        top: 30%;
+        left: 70%;
+    }
+
+    .menu-toggle.active::before {
+        width: 120px;
+        height: 114px;
+        top: 70%;
+        left: 5%;
+    }
+}
+
+
+
+
+/* define keyframes */
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(10px, 10px);
+    }
+
+    50% {
+        transform: translate(20px, 0);
+    }
+
+    75% {
+        transform: translate(10px, -10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* apply animation to elements */
+
+.menu-toggle.active::before, 
+.site-logo.active::before,
+.site-logo.active::after {
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
