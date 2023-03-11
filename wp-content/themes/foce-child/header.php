@@ -50,7 +50,7 @@
                     <li><a href="#characters" onclick="closeNav()">Personnages</a></li>
                     <li><a href="#place" onclick="closeNav()">Lieu</a></li>
                     <li><a href="#studio" onclick="closeNav()">Studio Koukaki</a></li>
-                    <li class="studioK"><a href="#">STUDIO KOUKAKI</li>
+                    <li class="studioK">STUDIO KOUKAKI</li>
                 </ul>
 
             </nav><!-- #site-navigation -->

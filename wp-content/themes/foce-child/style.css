@@ -31,32 +31,32 @@
 /* j'ai utilisé la propriété animation-iteration-count et j'ai la défini
  sur infini et animation-timing-function sur linear */
 
- .site-footer::after,
- .site-footer:before,
- .story h2::after,
- .story__article::after,
- #studio h2::before,
- #studio h2::after,
- .site-footer ul::after,
- .site-header.active::after,
- .site-header.active::before,
- .main-navigation.active::before,
- .main-navigation.active::after,
- .menu-toggle.active::after {
-     animation: rotate-infinite 25s linear infinite;
-     transform-origin: center;
- }
- 
- @keyframes rotate-infinite {
-     0% {
-         transform: rotate(0deg);
-     }
- 
-     100% {
-         transform: rotate(720deg);
-     }
- }
- 
+.site-footer::after,
+.site-footer:before,
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer ul::after,
+.site-header.active::after,
+.site-header.active::before,
+.main-navigation.active::before,
+.main-navigation.active::after,
+.menu-toggle.active::after {
+    animation: rotate-infinite 25s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes rotate-infinite {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
 
 
 /* les animations pour les titres h2  */
@@ -289,14 +289,14 @@
     justify-content: flex-end;
 }
 
-.studioK li a {
+.studioK li {
     font-size: 15px !important;
 
 }
 
-.studioK ul li a{
-    margin-top: 65px !important;
-    margin-bottom: -72px !important;
+.studioK {
+    display: block;
+    margin-top: 82px;
 }
 
 /* Cacher le menu de navigation par défaut */
@@ -366,7 +366,6 @@
     left: auto;
     height: calc(100% - 80px);
     width: 100%;
-    /* max-width: 100%; */
     z-index: 2;
     background-color: #FFF5E9;
     max-width: 1440px;
@@ -400,9 +399,8 @@
 .main-navigation ul {
     display: flex;
     flex-direction: column;
-  
-  }
-  
+}
+
 
 .site-logo {
     position: relative;
@@ -421,7 +419,7 @@
     overflow: hidden;
 }
 
-#site-navigation ul li:not(.site-logo):not(.studioK) a {
+#site-navigation ul li:not(.site-logo) a {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 400;
@@ -528,56 +526,12 @@
     content: "";
     background: url(images_koukaki/cat.png) no-repeat bottom left;
     background-size: contain;
-    width: 110px;
-    height: 110px;
+    width: 95px;
+    height: 95px;
     position: absolute;
-    top: 70vh;
-    left: 13vh;
+    top: 81vh;
+    left: 8vh;
     z-index: 3;
-}
-
-@media screen and (max-width: 768px) {
-    .site-header.active::after {
-        width: 100px;
-        height: 89px;
-        top: 80%;
-        left: 0%;
-    }
-
-    .site-header.active::before {
-        width: 60px;
-        height: 60px;
-        top: 40%;
-        left: 5%;
-    }
-
-    .main-navigation.active::before {
-        width: 80px;
-        height: 79px;
-        top: 35%;
-        left: 60%;
-    }
-
-    .main-navigation.active::after {
-        width: 80px;
-        height: 79px;
-        top: 5%;
-        left: 50%;
-    }
-
-    .menu-toggle.active::after {
-        width: 60px;
-        height: 60px;
-        top: 30%;
-        left: 70%;
-    }
-
-    .menu-toggle.active::before {
-        width: 120px;
-        height: 114px;
-        top: 70%;
-        left: 5%;
-    }
 }
 
 
@@ -608,7 +562,7 @@
 
 /* apply animation to elements */
 
-.menu-toggle.active::before, 
+.menu-toggle.active::before,
 .site-logo.active::before,
 .site-logo.active::after {
     animation-name: float;
@@ -616,3 +570,103 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
+
+
+/* ----------------swiper js---------------- */
+
+/* #coverflow-slide-container {
+    position: relative;
+    margin: 50px 0;
+  }
+  
+  #coverflow-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  #coverflow-slide .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 300px;
+    margin-right: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  #coverflow-slide .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  #coverflow-slide .swiper-container {
+    width: 100%;
+    padding: 0 50px;
+  }
+  
+  .swiper-pagination {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #fff;
+    opacity: 0.5;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  } */
+  
+  #coverflow-slide-container {
+    position: relative;
+    margin: 50px 0;
+  }
+  
+  .swiper-slide {
+    width: 30% !important;
+    margin-right: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    padding: 0 50px;
+  }
+  
+  .swiper-pagination {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .swiper-pagination-bullet {
+    display: none;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+  

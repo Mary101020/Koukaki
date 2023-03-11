@@ -2,7 +2,7 @@
 /* --------------Déclencher une rotation plus rapide des fleurs lors du défilement------------- */
 
 
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
   // Sélectionner les éléments à animer
   const myElements = [
     document.querySelector('.site-footer'),
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const minDuration = 5;
 
   // Ajouter un écouteur d'événement à l'objet window pour suivre la position de défilement
-  window.addEventListener('scroll', () => { 
+  window.addEventListener('scroll', () => {
     // Calculer la position de défilement actuelle par rapport à la hauteur totale du document
     const scrollPosition = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.scrollHeight;
 
-   // Calculer la nouvelle durée de l'animation en fonction de la position de défilement
+    // Calculer la nouvelle durée de l'animation en fonction de la position de défilement
     const newDuration = minDuration + ((maxDuration - minDuration) * (1 - scrollPosition));
 
     // Mise à jour de la durée d'animation des éléments
@@ -70,7 +70,7 @@ observer.observe(storySection);
 observer.observe(studioSection);
 
 
- /* --------------Calcul du mouvement et du positionnement des nuages------------- */
+/* --------------Calcul du mouvement et du positionnement des nuages------------- */
 
 const clouds = document.querySelector('.clouds');
 const bigCloud = document.querySelector('.big-cloud');
@@ -80,12 +80,11 @@ const sectionHeight = document.querySelector('#place').offsetHeight;
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
   const scrollPercentage = scrollPosition / sectionHeight;
-  bigCloud.style.left = -100 + scrollPercentage * 60 * 2 + 'px';
-  littleCloud.style.left = -100 + scrollPercentage * 20 * 2 + 'px';
+  bigCloud.style.left = -300 + scrollPercentage * 70 * 3 + 'px';
+  littleCloud.style.left = -300 + scrollPercentage * 40 * 3 + 'px';
 });
 
-  /* -------------------------Le menu burger---------------------------------------- */
-
+/* -------------------------Le menu burger---------------------------------------- */
 
 const menuToggle = document.querySelector('.menu-toggle');
 const menuOverlay = document.querySelector('#menu-overlay');
@@ -93,41 +92,71 @@ const navigationMenu = document.querySelector('.main-navigation');
 const siteHeader = document.querySelector('.site-header');
 const siteLogo = document.querySelector('.site-logo');
 
-
-
-
 menuToggle.addEventListener('click', () => {
-  // Toggle active class on burger menu
+  // Bascule la classe active sur le menu burger
   menuToggle.classList.toggle('active');
 
-  // Toggle active class on navigation menu
+  // Bascule la classe active dans le menu de navigation
   navigationMenu.classList.toggle('active');
 
-  // Toggle active class on menu overlay
+  // Bascule la classe active sur le menuOverlay
   menuOverlay.classList.toggle('active');
 
   siteHeader.classList.toggle('active');
+  siteHeader.classList.toggle('activate');
 
   siteLogo.classList.toggle('active');
+  siteLogo.classList.toggle('activate');
+});
+
+function closeNav() {
+  var menuOverlay = document.querySelector('#menu-overlay');
+  var navigationMenu = document.querySelector('.main-navigation');
+  const siteHeader = document.querySelector('.site-header');
+  const siteLogo = document.querySelector('.site-logo');
+
+  // Supprime la classe active du menu burger, du menu superposé et du menu de navigation
+  document.querySelector('.menu-toggle').classList.remove('active');
+  menuOverlay.classList.remove('active');
+  navigationMenu.classList.remove('active');
+  siteHeader.classList.remove('active');
+  siteHeader.classList.remove('activate');
+  siteLogo.classList.remove('active');
+  siteLogo.classList.remove('activate');
+}
 
 
 
 
+
+// var coverflowSwiper = new Swiper('#coverflow-slide-container .swiper-container', {
+//   effect: 'freeMode',
+//   centeredSlides: true,
+//   slidesPerView: 3,
+//   loop: true,
+//   autoplay: {
+//     delay: 1000,
+//     disableOnInteraction: false,
+//   },
+//   pagination: {
+//     el: '.swiper-pagination',
+//   },
+// });
+var coverflowSwiper = new Swiper('#coverflow-slide-container .swiper-container', {
+  loop: true,
+  slidesPerView: 'auto',
+  spaceBetween: 30,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  freeMode: true,
+  loopAdditionalSlides: 1,
 });
 
 
-  function closeNav() {
-    var menuOverlay = document.querySelector('#menu-overlay');
-    var navigationMenu = document.querySelector('.main-navigation');
 
-    // Remove active class from burger menu, menu overlay, and navigation menu
-    document.querySelector('.menu-toggle').classList.remove('active');
-    menuOverlay.classList.remove('active');
-    navigationMenu.classList.remove('active');
-    
-  }
 
-  
 
 
 
