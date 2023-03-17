@@ -802,7 +802,7 @@ textarea {
 }
 
 .story #characters div {
-	flex: 1;
+	/* flex: 1; */
 }
 
 .story #characters .other-characters {

@@ -14,38 +14,24 @@ if ( get_stylesheet() !== get_template() ) {
         return get_option( 'theme_mods_' . get_template(), $default );
     } );
 }
-// ---------------------the script file--------------------
+// ---------------------le swiper--------------------
 
-function child_theme_scripts() {
+function my_child_theme_scripts() {
+   
+    wp_deregister_script( 'swiper' );
+    wp_enqueue_script( 'my-swiper', 'https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js', array(), null, true );
+}
+add_action( 'wp_enqueue_scripts', 'my_child_theme_scripts' );
+
+// ---------------------le script personalise--------------------
+
+function my_child_theme_script() {
     wp_enqueue_script( 'child-theme-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'jquery' ), '1.0.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'child_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'my_child_theme_script' );
 
 
-
-
-// -------------------------Swiper----------------------------
-function enqueue_swiper() {
-    wp_enqueue_style( 'swiper-style', get_stylesheet_directory_uri() . '/swiper/swiper-bundle.min.css' );
-    wp_enqueue_script( 'swiper-script', get_stylesheet_directory_uri() . '/swiper/swiper-bundle.min.js', array('jquery'), '5.4.5', true );
-  }
-  
-
-
-
-  add_action( 'wp_enqueue_scripts', 'enqueue_swiper' );
-  
-//la création d'une fonction load_coverflow_slide() à utiliser plus tard sur la page d'accueil
-  function load_coverflow_slide() {
-    get_template_part( 'coverflow-slide' );
-  }
-  add_action( 'wp_enqueue_scripts', 'load_coverflow_slide' );
-  
-
-
-
-
-add_action( 'wp_enqueue_scripts', 'child_theme_enqueue_styles' );
+// ---------------------le style.css personalise--------------------
 function child_theme_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-style', get_stylesheet_uri(), array( 'parent-style' ) );
@@ -54,13 +40,6 @@ function child_theme_enqueue_styles() {
 
 
 
-add_filter( 'template_include', 'child_theme_template_include', 99 );
-function child_theme_template_include( $template ) {
-    if ( 'header.php' == basename( $template ) ) {
-        $new_template = locate_template( array( 'header.php' ) );
-        if ( ! empty( $new_template ) ) {
-            return $new_template;
-        }
-    }
-    return $template;
-}
+
+
+

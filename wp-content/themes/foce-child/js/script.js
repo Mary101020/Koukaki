@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.site-footer ul'),
   ];
   const myPseudoElements = [
-    window.getComputedStyle(document.querySelector('.site-footer'), '::after'),
-    window.getComputedStyle(document.querySelector('.site-footer'), '::before'),
-    window.getComputedStyle(document.querySelector('.story h2'), '::after'),
-    window.getComputedStyle(document.querySelector('.story__article'), '::after'),
-    window.getComputedStyle(document.querySelector('#studio h2'), '::before'),
-    window.getComputedStyle(document.querySelector('#studio h2'), '::after'),
-    window.getComputedStyle(document.querySelector('.site-footer ul'), '::after')
+    document.querySelector('.site-footer::after'),
+    document.querySelector('.site-footer::before'),
+    document.querySelector('.story h2::after'),
+    document.querySelector('.story__article::after'),
+    document.querySelector('#studio h2::before'),
+    document.querySelector('#studio h2::after'),
+    document.querySelector('.site-footer ul::after')
   ];
-  const myElementsWithPseudo = [...myElements, ...myPseudoElements];
-  // console.log(myElementsWithPseudo);
+  const myElementsWithPseudo = [...myElements, ...myPseudoElements].filter(element => element !== null && element !== undefined);
+
 
   // Définir les durées maximale et minimale des animations (en secondes)
   const maxDuration = 25;
@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollPosition = (document.documentElement.scrollTop + window.innerHeight) / document.documentElement.scrollHeight;
 
     // Calculer la nouvelle durée de l'animation en fonction de la position de défilement
-    const newDuration = minDuration + ((maxDuration - minDuration) * (1 - scrollPosition));
+    const newDuration = minDuration + ((maxDuration - minDuration) * (0.5 - scrollPosition));
 
-    // Mise à jour de la durée d'animation des éléments
-    myElementsWithPseudo.forEach(element => {
-      element.style.animationDuration = `${newDuration}s`;
-    });
+    document.documentElement.style.setProperty('--animeDur', `${newDuration}s`);
+
+
   });
 });
+
+
 
 
 
@@ -80,8 +81,8 @@ const sectionHeight = document.querySelector('#place').offsetHeight;
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
   const scrollPercentage = scrollPosition / sectionHeight;
-  bigCloud.style.left = -300 + scrollPercentage * 70 * 3 + 'px';
-  littleCloud.style.left = -300 + scrollPercentage * 40 * 3 + 'px';
+  bigCloud.style.left = -300 + scrollPercentage * 30 * 3 + 'px';
+  littleCloud.style.left = -300 + scrollPercentage * 10 * 3 + 'px';
 });
 
 /* -------------------------Le menu burger---------------------------------------- */
@@ -125,34 +126,22 @@ function closeNav() {
   siteLogo.classList.remove('activate');
 }
 
+/* -------------------------Swiper script------------------------------------ */
 
-
-
-
-// var coverflowSwiper = new Swiper('#coverflow-slide-container .swiper-container', {
-//   effect: 'freeMode',
-//   centeredSlides: true,
-//   slidesPerView: 3,
-//   loop: true,
-//   autoplay: {
-//     delay: 1000,
-//     disableOnInteraction: false,
-//   },
-//   pagination: {
-//     el: '.swiper-pagination',
-//   },
-// });
-var coverflowSwiper = new Swiper('#coverflow-slide-container .swiper-container', {
-  loop: true,
+var coverflowSwiper = new Swiper('.swiper-container', {
   slidesPerView: 'auto',
   spaceBetween: 30,
   autoplay: {
     delay: 1000,
     disableOnInteraction: false,
   },
-  freeMode: true,
-  loopAdditionalSlides: 1,
+  speed: 2000,
 });
+
+
+
+
+
 
 
 

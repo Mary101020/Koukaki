@@ -11,7 +11,7 @@
 
 ?>
 	<footer id="colophon" class="site-footer">
-    <section><?php get_template_part( 'oscar_section' ); ?></section>
+    <?php get_template_part( 'oscar_section' ); ?>
         <ul>
             <li><a href="#">Mentions Légales</a></li>
             <li><a href="#">STUDIO KOUKAKI</a></li>
